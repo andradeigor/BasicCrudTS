@@ -1,5 +1,4 @@
 import { Model, Schema, model } from "mongoose";
-import connection from "../index";
 
 export interface UserInterface {
   email: string;
