@@ -8,8 +8,10 @@
     "start": "nodemon src/index.ts"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/joi": "^17.2.3",
     "@types/mongoose": "^5.11.97",
+    "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",

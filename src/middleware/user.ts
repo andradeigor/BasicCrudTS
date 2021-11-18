@@ -2,20 +2,17 @@ import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
 
 export default {
-  async CreateUserMiddle(
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ): Promise<void> {
+  async CreateUserMiddle(req: Request, res: Response, next: NextFunction) {
     const schema = Joi.object({
+      name: Joi.string().min(3).required(),
       email: Joi.string().email().required(),
-      name: Joi.string().required(),
       password: Joi.string().min(6).required(),
     });
-    const { error } = schema.validate(req.body, {
+    const options = {
       abortEarly: false,
-    });
-    if (error?.message) {
+    };
+    const { error } = schema.validate(req.body, options);
+    if (error) {
       res.status(400).json({
         error: `Validation error: ${error.details
           .map((error) => error.message)
