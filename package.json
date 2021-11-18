@@ -1,12 +1,11 @@
 {
   "name": "BasicCrudTS",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.js",
   "repository": "git@github.com:andradeigor/BasicCrudTS.git",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon build/src/index.js"
+    "start": "nodemon src/index.ts"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
