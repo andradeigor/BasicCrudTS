@@ -1,6 +1,10 @@
-import { Model } from "mongoose";
+import { UserDeleteInterface } from "../../controller/userController";
 import { UserModel, UserInterface } from "../model/user";
 import Bcrypt from "../../utils/bcrypt";
+
+interface deleted {
+  deletedCount: Number;
+}
 export default {
   async createUser(data: UserInterface) {
     const hasUser: UserInterface | null = await UserModel.findOne({
@@ -26,5 +30,9 @@ export default {
       where: { id },
     });
     return user;
+  },
+  async DeleteUser(data: UserDeleteInterface) {
+    const user: deleted = await UserModel.deleteOne({ id: data.id });
+    return user.deletedCount > 0 ? true : false;
   },
 };

@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import { UserInterface } from "../database/model/user";
 import UserService from "../database/service/user";
-
+export interface UserDeleteInterface extends Document {
+  id: string | boolean;
+  name: string;
+  email: string;
+}
 export default {
   async CreateUser(req: Request, res: Response): Promise<void> {
     const data: UserInterface = req.body;
@@ -19,5 +23,13 @@ export default {
     user
       ? res.json({ user })
       : res.status(400).json({ error: "User not found!" });
+  },
+  async DeleteUser(req: Request, res: Response): Promise<void> {
+    const data: UserDeleteInterface = req.body;
+    data.id = req.params.id ? req.params.id : false;
+    const deleted: boolean = await UserService.DeleteUser(data);
+    deleted
+      ? res.json({ message: "user deleted" })
+      : res.status(400).json({ error: "invalid inputs" });
   },
 };
