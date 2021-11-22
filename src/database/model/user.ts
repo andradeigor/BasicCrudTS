@@ -1,6 +1,6 @@
 import { Model, Schema, model } from "mongoose";
 
-export interface UserInterface {
+export interface UserInterface extends Document {
   _id?: string;
   email: string;
   name: string;
