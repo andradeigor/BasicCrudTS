@@ -22,4 +22,17 @@ export default {
       next();
     }
   },
+  async GetUserMiddle(req: Request, res: Response, next: NextFunction) {
+    const id: string = req.params.id;
+    let isValid: boolean = true;
+    if (id.length < 8) isValid = false;
+
+    if (!isValid) {
+      res.status(400).json({
+        error: "Id not valid!",
+      });
+    } else {
+      next();
+    }
+  },
 };

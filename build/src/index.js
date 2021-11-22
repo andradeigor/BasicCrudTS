@@ -9,6 +9,7 @@ const index_1 = __importDefault(require("./database/index"));
 const app = (0, express_1.default)();
 const PORT = 8000;
 (0, index_1.default)();
+app.use(express_1.default.json());
 app.use("/user", user_1.default);
 app.listen(PORT, () => {
     console.log(`🔥 Hi, I'm running at http://localhost:${PORT}/.`);
