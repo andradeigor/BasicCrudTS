@@ -35,4 +35,11 @@ export default {
     const user: deleted = await UserModel.deleteOne({ id: data.id });
     return user.deletedCount > 0 ? true : false;
   },
+  async PutUser(data: UserDeleteInterface) {
+    const newUser: UserInterface | null = await UserModel.findOneAndUpdate(
+      { id: data.id },
+      data
+    );
+    return newUser;
+  },
 };

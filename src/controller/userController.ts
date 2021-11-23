@@ -32,4 +32,12 @@ export default {
       ? res.json({ message: "user deleted" })
       : res.status(400).json({ error: "invalid inputs" });
   },
+  async PutUser(req: Request, res: Response): Promise<void> {
+    const data: UserDeleteInterface = req.body;
+    data.id = req.params.id;
+    const newUser: UserInterface | null = await UserService.PutUser(data);
+    newUser
+      ? res.json(newUser)
+      : res.status(400).json({ error: "invalid inputs" });
+  },
 };
