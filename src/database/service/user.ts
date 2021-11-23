@@ -2,9 +2,6 @@ import { UserDeleteInterface } from "../../controller/userController";
 import { UserModel, UserInterface } from "../model/user";
 import Bcrypt from "../../utils/bcrypt";
 
-interface deleted {
-  deletedCount: Number;
-}
 export default {
   async createUser(data: UserInterface) {
     const hasUser: UserInterface | null = await UserModel.findOne({
@@ -27,18 +24,21 @@ export default {
   },
   async GetUser(id: string) {
     const user: UserInterface | null = await UserModel.findOne({
-      where: { id },
+      where: { _id: id },
     });
     return user;
   },
   async DeleteUser(data: UserDeleteInterface) {
-    const user: deleted = await UserModel.deleteOne({ id: data.id });
-    return user.deletedCount > 0 ? true : false;
+    const user: UserInterface | null = await UserModel.findByIdAndRemove(
+      data.id
+    );
+    return user;
   },
   async PutUser(data: UserDeleteInterface) {
-    const newUser: UserInterface | null = await UserModel.findOneAndUpdate(
-      { id: data.id },
-      data
+    const newUser: UserInterface | null = await UserModel.findByIdAndUpdate(
+      data.id,
+      data,
+      { new: true }
     );
     return newUser;
   },

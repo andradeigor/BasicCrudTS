@@ -27,9 +27,9 @@ export default {
   async DeleteUser(req: Request, res: Response): Promise<void> {
     const data: UserDeleteInterface = req.body;
     data.id = req.params.id ? req.params.id : false;
-    const deleted: boolean = await UserService.DeleteUser(data);
+    const deleted: UserInterface | null = await UserService.DeleteUser(data);
     deleted
-      ? res.json({ message: "user deleted" })
+      ? res.json(deleted)
       : res.status(400).json({ error: "invalid inputs" });
   },
   async PutUser(req: Request, res: Response): Promise<void> {
