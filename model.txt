@@ -1,0 +1,9 @@
+post: {
+	"email":"user@user.com",
+	"name": "my user",
+	"password":"123456"
+}
+put: {
+	"email":"user@user.com",
+	"name": "my user",
+}
