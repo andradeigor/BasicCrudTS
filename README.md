@@ -4,8 +4,8 @@ Projeto desenvolvido por [Igor Andrade](https://github.com/andradeigor). Consist
 
 - [Como usar](#como-usar)
 - [Rotas](#rotas)
-- [Tecnologias](#tecnologias)
 - [Testando](#testando)
+- [Tecnologias](#tecnologias)
 - [Contribuidores](#contribuidores)
 - [Licença](#licença)
 
