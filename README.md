@@ -3,8 +3,9 @@
 Projeto desenvolvido por [Igor Andrade](https://github.com/andradeigor). Consiste em um Crud de usuários feito para por em práticas meus estudos de TypeScript
 
 - [Como usar](#como-usar)
-- [Comandos](#comandos)
+- [Rotas](#rotas)
 - [Tecnologias](#tecnologias)
+- [Testando](#testando)
 - [Contribuidores](#contribuidores)
 - [Licença](#licença)
 
