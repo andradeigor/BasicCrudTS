@@ -2,11 +2,12 @@
 
 Projeto desenvolvido por [Igor Andrade](https://github.com/andradeigor). Consiste em um Crud de usuários feito para por em práticas meus estudos de TypeScript
 
-- [Como usar](#como-usar)
-- [Comandos](#comandos)
-- [Tecnologias](#tecnologias)
-- [Contribuidores](#contribuidores)
-- [Licença](#licença)
+- [Como usar](#-como-usar)
+- [Rotas](#-rotas)
+- [Testando](#-testando)
+- [Tecnologias](#-tecnologias)
+- [Contribuidores](#-contribuidores)
+- [Licença](#-licença)
 
 ## 🤖 Como Usar:
 
@@ -51,6 +52,7 @@ Use o arquivo model.txt para se guiar e faça os requests usando programas como:
 
 ## 💻 Tecnologias
 
+- TypeScript
 - NodeJS
 - Express
 - Joi
