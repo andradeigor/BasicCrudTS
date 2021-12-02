@@ -24,6 +24,9 @@ export default {
     return users;
   },
   async GetUser(id: string) {
+    if (!isValidObjectId(id)) {
+      return false;
+    }
     const user: UserInterface | null = await UserModel.findById(id);
     return user;
   },

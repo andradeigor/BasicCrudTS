@@ -11,11 +11,12 @@ test.only("Should Create an User", async (): Promise<void> => {
   const data: UserInterface = await FakerData.FakeUser();
 
   const user = await axios.post("http://localhost:8000/user/", data);
-  const userdata = await UserService.GetUser(user.data.user._id);
+  const userdata = await axios.get(
+    `http://localhost:8000/user/${user.data.user._id}`
+  );
+  expect(user.data.user).toEqual(userdata.data.user);
 
-  expect(user.data.user).toEqual(userdata);
-
-  await UserService.DeleteUser(user.data.user._id);
+  await UserService.DeleteUser(user.data);
 });
 
 test("Should Get an User", async (): Promise<void> => {

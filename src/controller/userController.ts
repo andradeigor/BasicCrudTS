@@ -19,7 +19,9 @@ export default {
     res.json(user);
   },
   async GetUser(req: Request, res: Response): Promise<void> {
-    const user: UserInterface | null = await UserService.GetUser(req.params.id);
+    const user: UserInterface | null | boolean = await UserService.GetUser(
+      req.params.id
+    );
     user
       ? res.json({ user })
       : res.status(400).json({ error: "User not found!" });
