@@ -19,7 +19,7 @@ export default {
     res.json(user);
   },
   async GetUser(req: Request, res: Response): Promise<void> {
-    const user: UserInterface | null = await UserService.GetUser(req.body.id);
+    const user: UserInterface | null = await UserService.GetUser(req.params.id);
     user
       ? res.json({ user })
       : res.status(400).json({ error: "User not found!" });
@@ -35,7 +35,9 @@ export default {
   async PutUser(req: Request, res: Response): Promise<void> {
     const data: UserDeleteInterface = req.body;
     data.id = req.params.id;
-    const newUser: UserInterface | null = await UserService.PutUser(data);
+    const newUser: UserInterface | null | boolean = await UserService.PutUser(
+      data
+    );
     newUser
       ? res.json(newUser)
       : res.status(400).json({ error: "invalid inputs" });

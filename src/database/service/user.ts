@@ -1,5 +1,6 @@
 import { UserDeleteInterface } from "../../controller/userController";
 import { UserModel, UserInterface } from "../model/user";
+import { isValidObjectId } from "mongoose";
 import Bcrypt from "../../utils/bcrypt";
 
 export default {
@@ -23,9 +24,7 @@ export default {
     return users;
   },
   async GetUser(id: string) {
-    const user: UserInterface | null = await UserModel.findOne({
-      where: { _id: id },
-    });
+    const user: UserInterface | null = await UserModel.findById(id);
     return user;
   },
   async DeleteUser(data: UserDeleteInterface) {
@@ -35,6 +34,9 @@ export default {
     return user;
   },
   async PutUser(data: UserDeleteInterface) {
+    if (!isValidObjectId(data.id)) {
+      return false;
+    }
     const newUser: UserInterface | null = await UserModel.findByIdAndUpdate(
       data.id,
       data,
